@@ -6,18 +6,31 @@ const BASE_URL = "/api/tickets";
 
 function Main(props) {
   const [ticketsArray, setTicketsArray] = useState([]);
-  const [userInput, setUserInput] = useState("");
+  const [hiddenCounter, setHiddenCounter] = useState(0);
+  const [tempArray, setTempArray] = useState([]);
 
   useEffect(() => {
     (async function loadTickets() {
       const res = await axios.get(BASE_URL);
       setTicketsArray(res.data);
+      const temp = [];
+      res.data.forEach((ticket) => {
+        temp.push(Object.assign({}, ticket));
+      });
+      setTempArray(temp);
     })();
+    setHiddenCounter(0);
   }, []);
 
   const onInputChange = async (input) => {
-      const res = await axios.get(`${BASE_URL}?searchText=${input}`);
-      setTicketsArray(res.data);
+    const res = await axios.get(`${BASE_URL}?searchText=${input}`);
+    setTicketsArray(res.data);
+  };
+
+  const restoreHandler = async () => {
+    setHiddenCounter(0);
+    console.log(tempArray)
+    setTicketsArray(tempArray);
   };
 
   return (
@@ -27,9 +40,28 @@ function Main(props) {
         id="searchInput"
         type="text"
       />
+      <div id="counter-div">
+        Number of hidden tickets:
+        <span id="hideTicketsCounter">{hiddenCounter}</span>
+      </div>
+      <button
+        id="restoreHideTickets"
+        onClick={async () => await restoreHandler()}
+      >
+        restore
+      </button>
       <div className="ticket-area">
         {ticketsArray.map((ticket, i) => {
-          return <Ticket key={`ticket key: ${i}`} ticket={ticket} />;
+          return (
+            <Ticket
+              key={`ticket key: ${i}`}
+              ticket={ticket}
+              setHiddenCounter={setHiddenCounter}
+              hiddenCounter={hiddenCounter}
+              setTicketsArray={setTicketsArray}
+              ticketsArray={ticketsArray}
+            />
+          );
         })}
       </div>
     </div>
