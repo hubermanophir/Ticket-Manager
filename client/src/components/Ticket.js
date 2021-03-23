@@ -1,14 +1,19 @@
 import React from "react";
 
-function Ticket({ title, content, userEmail, done, creationTime }) {
+function Ticket({ ticket}) {
   return (
     <div className="ticket">
-      <div className="title">{title}</div>
-      <div className="content">{content}</div>
+      <div className="title">{ticket.title}</div>
+      <div className="content">{ticket.content}</div>
       <div className="ticket-info">
-        <span className="user-email">{userEmail}</span>
-        <span className="done-status">{done}</span>
-        <span className="ticket-time">{creationTime}</span>
+        <span className="user-email">{ticket.userEmail}</span>
+        <span className="done-status">{ticket.done}</span>
+        <span className="ticket-time">{ticket.creationTime}</span>
+      </div>
+      <div className="label-div">
+        {ticket.labels ? ticket.labels.map((label,i) => {
+          return <span key={`label key: ${i}`} className="label">{label}</span>;
+        }):null}
       </div>
     </div>
   );
