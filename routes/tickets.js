@@ -27,9 +27,6 @@ router.get("/", async (req, res) => {
 
 router.patch("/:ticketId/:isDone", async (req, res) => {
   const { ticketId, isDone } = req.params;
-  if (!ticketId.match(/^[0-9a-fA-F]{24}$/) || !ObjectId.isValid(ticketId)) {
-    return res.status(400).json({ error: "Invalid id" });
-  }
   try {
     await Ticket.findById(ticketId);
   } catch (error) {
