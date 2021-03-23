@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 const Ticket = require("../models/Ticket");
 
@@ -25,17 +26,25 @@ router.get("/", async (req, res) => {
 });
 
 router.patch("/:ticketId/:isDone", async (req, res) => {
-  const { ticketId,isDone } = req.params;
-    await Ticket.findByIdAndUpdate(
-      ticketId,
-      { done: isDone==='done'?true:false},
-      { new: true },
-      (err) => {
-        if (err) {
-          return res.status(500).json({ Error: err });
-        }
+  const { ticketId, isDone } = req.params;
+  if (!ticketId.match(/^[0-9a-fA-F]{24}$/) || !ObjectId.isValid(ticketId)) {
+    return res.status(400).json({ error: "Invalid id" });
+  }
+  try {
+    await Ticket.findById(ticketId);
+  } catch (error) {
+    return res.status(404).json({ error: "Ticket not found" });
+  }
+  await Ticket.findByIdAndUpdate(
+    ticketId,
+    { done: isDone === "done" ? true : false },
+    { new: true },
+    (err) => {
+      if (err) {
+        return res.status(500).json({ Error: err });
       }
-    );
+    }
+  );
   return res.status(200).json({ updated: true });
 });
 
