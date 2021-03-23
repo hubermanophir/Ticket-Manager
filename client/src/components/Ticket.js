@@ -8,48 +8,40 @@ function Ticket({
   setTicketsArray,
   ticketsArray,
 }) {
-  const [shown, setShown] = useState(true);
-
   const hideClickHandle = (e) => {
-    const ticketsDiv = e.target.parentElement.parentElement;
-    const ticketArray = ticketsDiv.childNodes;
-    const ticketDiv = e.target.parentElement;
-    const index = [...ticketArray].indexOf(ticketDiv);
-    ticketsArray.splice(index, 0);
-    setTicketsArray(ticketsArray);
-    setShown(!shown);
+    const target = e.target.parentNode;
+    const ticketArr = Array.from(document.querySelectorAll(".ticket"));
+    const ticketIndex = ticketArr.indexOf(target);
+    const tempTicketsArr = [...ticketsArray];
+    tempTicketsArr.splice(ticketIndex, 1);
+    setTicketsArray(tempTicketsArr);
     setHiddenCounter(hiddenCounter + 1);
   };
 
   return (
-    shown && (
-      <div className="ticket">
-        <div className="title">{ticket.title}</div>
-        <div className="content">{ticket.content}</div>
-        <div className="ticket-info">
-          <span className="user-email">{ticket.userEmail}</span>
-          <span className="done-status">{ticket.done}</span>
-          <span className="ticket-time">{ticket.creationTime}</span>
-        </div>
-        <div className="label-div">
-          {ticket.labels
-            ? ticket.labels.map((label, i) => {
-                return (
-                  <span key={`label key: ${i}`} className="label">
-                    {label}
-                  </span>
-                );
-              })
-            : null}
-        </div>
-        <button
-          onClick={(e) => hideClickHandle(e)}
-          className="hideTicketButton"
-        >
-          Hide
-        </button>
+    <div className="ticket">
+      <div className="title">{ticket.title}</div>
+      <div className="content">{ticket.content}</div>
+      <div className="ticket-info">
+        <span className="user-email">{ticket.userEmail}</span>
+        <span className="done-status">{ticket.done}</span>
+        <span className="ticket-time">{ticket.creationTime}</span>
       </div>
-    )
+      <div className="label-div">
+        {ticket.labels
+          ? ticket.labels.map((label, i) => {
+              return (
+                <span key={`label key: ${i}`} className="label">
+                  {label}
+                </span>
+              );
+            })
+          : null}
+      </div>
+      <button onClick={(e) => hideClickHandle(e)} className="hideTicketButton">
+        Hide
+      </button>
+    </div>
   );
 }
 

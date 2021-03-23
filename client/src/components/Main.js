@@ -13,11 +13,7 @@ function Main(props) {
     (async function loadTickets() {
       const res = await axios.get(BASE_URL);
       setTicketsArray(res.data);
-      const temp = [];
-      res.data.forEach((ticket) => {
-        temp.push(Object.assign({}, ticket));
-      });
-      setTempArray(temp);
+      setTempArray(res.data);
     })();
     setHiddenCounter(0);
   }, []);
@@ -27,9 +23,8 @@ function Main(props) {
     setTicketsArray(res.data);
   };
 
-  const restoreHandler = async () => {
+  const restoreHandler = () => {
     setHiddenCounter(0);
-    console.log(tempArray)
     setTicketsArray(tempArray);
   };
 
@@ -44,10 +39,7 @@ function Main(props) {
         Number of hidden tickets:
         <span id="hideTicketsCounter">{hiddenCounter}</span>
       </div>
-      <button
-        id="restoreHideTickets"
-        onClick={async () => await restoreHandler()}
-      >
+      <button id="restoreHideTickets" onClick={() => restoreHandler()}>
         restore
       </button>
       <div className="ticket-area">
