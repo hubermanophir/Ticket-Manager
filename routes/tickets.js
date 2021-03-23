@@ -24,7 +24,20 @@ router.get("/", async (req, res) => {
   return res.status(200).json(ticketsArray);
 });
 
-// router.get('/:')
+router.patch("/:ticketId/:isDone", async (req, res) => {
+  const { ticketId,isDone } = req.params;
+    await Ticket.findByIdAndUpdate(
+      ticketId,
+      { done: isDone==='done'?true:false},
+      { new: true },
+      (err) => {
+        if (err) {
+          return res.status(500).json({ Error: err });
+        }
+      }
+    );
+  return res.status(200).json({ updated: true });
+});
 
 //-----------------------------------functions-------------------------------------------------
 
