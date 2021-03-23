@@ -1,6 +1,6 @@
 import React from 'react';
 
-function searchArea(props) {
+function SearchArea(props) {
     return (
         <div className="search-area">
             <input onChange={() => onChangeHandler} type="text"/>
@@ -9,7 +9,7 @@ function searchArea(props) {
 }
 
 const onChangeHandler = () => {
-    
+
 }
 
-export default searchArea;
+export default SearchArea;

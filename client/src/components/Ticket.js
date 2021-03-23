@@ -1,6 +1,6 @@
 import React from "react";
 
-function ticket({ title, content, userEmail, done, creationTime }) {
+function Ticket({ title, content, userEmail, done, creationTime }) {
   return (
     <div className="ticket">
       <div className="title">{title}</div>
@@ -14,4 +14,4 @@ function ticket({ title, content, userEmail, done, creationTime }) {
   );
 }
 
-export default ticket;
+export default Ticket;

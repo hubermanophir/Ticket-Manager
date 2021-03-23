@@ -1,16 +1,41 @@
 import React from "react";
-import searchArea from "./searchArea";
+import SearchArea from "./SearchArea";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import Ticket from "./Ticket";
 
-function main(props) {
+function Main(props) {
+  const [ticketsArray, setTicketsArray] = useState([]);
+
+  useEffect(() => {
+    (async function loadTickets() {
+      setTicketsArray(await onLoadHandler());
+    })();
+  }, []);
+
   return (
     <div className="main-div">
-      <searchArea />
-      <div onLoad={() => onLoadHandler} className="ticket-area"></div>
+      <SearchArea />
+      <div className="ticket-area">
+        {ticketsArray.map((ticket) => {
+          return (
+            <Ticket
+              title={ticket.title}
+              content={ticket.content}
+              userEmail={ticket.userEmail}
+              done={ticket.done}
+              creationTime={ticket.creationTime}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
 
-const onLoadHandler = () => {};
+const onLoadHandler = async () => {
+  const res = await axios.get("/api/tickets/");
+  return res.data;
+};
 
-export default main;
+export default Main;
