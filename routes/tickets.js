@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 
 const Ticket = require("../models/Ticket");
 
+//------------------------------------routes---------------------------------------------------
+
 //Get all tickets
 router.get("/", async (req, res) => {
   let ticketsArray;
@@ -22,11 +24,17 @@ router.get("/", async (req, res) => {
   return res.status(200).json(ticketsArray);
 });
 
+// router.get('/:')
+
+//-----------------------------------functions-------------------------------------------------
+
 //returns array of tickets that their title includes the user's string
 const stringInTicket = (ticketArray, userString) => {
+  const lowerCaseUserString = userString.toLowerCase();
   const newArray = [];
   ticketArray.forEach((ticket) => {
-    if (ticket.title.includes(userString)) {
+    const lowerCaseTitle = ticket.title.toLowerCase();
+    if (lowerCaseTitle.includes(lowerCaseUserString)) {
       newArray.push(ticket);
     }
   });
