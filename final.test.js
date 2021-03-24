@@ -55,7 +55,6 @@ describe(projectName, () => {
   test("Can get all tickets", async () => {
     const { body } = await request(app).get("/api/tickets").expect(200);
     const allTickets = await tickets.find({}).toArray();
-
     expect(body.length).toBe(allTickets.length);
     expect(body[0]._id.toString()).toBe(allTickets[0]._id.toString());
   });
