@@ -126,6 +126,9 @@ describe(projectName, () => {
   test("Can delete a ticket", async (done) => {
     const response = await request(app).delete(`/api/tickets/${myId}`);
     expect(response.status).toBe(200);
+    expect(response.body).toEqual({ message: "Ticket deleted successfully" });
+    const ticket = await Ticket.find({ title: "test title" });
+    expect(ticket[0]).toBeUndefined();
     done();
   });
 });
