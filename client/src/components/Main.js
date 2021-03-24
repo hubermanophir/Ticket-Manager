@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Ticket from "./Ticket";
 import AddNew from "./AddNew";
+import SplitButton from "./SplitButton";
 const BASE_URL = "/api/tickets";
 
 function Main(props) {
@@ -34,7 +35,7 @@ function Main(props) {
   const restoreHandler = () => {
     setHiddenCounter(0);
     setTicketsArray(tempArray);
-    setLiveTicketsLength(tempArray.length)
+    setLiveTicketsLength(tempArray.length);
   };
 
   return (
@@ -44,7 +45,15 @@ function Main(props) {
         id="searchInput"
         type="text"
       />
-      <AddNew setTicketsArray={setTicketsArray} liveTicketsLength={liveTicketsLength} setLiveTicketsLength={setLiveTicketsLength}/>
+      <SplitButton
+        setTicketsArray={setTicketsArray}
+        ticketsArray={ticketsArray}
+      />
+      <AddNew
+        setTicketsArray={setTicketsArray}
+        liveTicketsLength={liveTicketsLength}
+        setLiveTicketsLength={setLiveTicketsLength}
+      />
       <div className="ticket-number-div">{liveTicketsLength}</div>
       <div id="counter-div">
         Number of hidden tickets:
