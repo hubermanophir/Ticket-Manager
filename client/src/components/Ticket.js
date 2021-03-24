@@ -11,7 +11,9 @@ function Ticket({
 }) {
   const [isDone, setIsDone] = useState(false);
 
-  useEffect(() => {}, [isDone]);
+  useEffect(() => {
+    setIsDone(ticket.done);
+  }, []);
 
   const hideClickHandle = (e) => {
     const target = e.target.parentNode;
@@ -25,9 +27,12 @@ function Ticket({
 
   const isDoneHandler = (e) => {
     setIsDone(!isDone);
-    const ticket = e.parentElement;
-    const id = ticket.childNodes[1].innerText;
-    // const res = axios.patch(`/api/tickets/${id}`);
+    (async () => {
+      const ticket = e.parentElement;
+      const id = ticket.childNodes[1].innerText;
+      const done = isDone ? "undone" : "done";
+      const res = await axios.patch(`/api/tickets/${id}/${done}`);
+    })();
   };
 
   const deleteHandler = (e) => {
@@ -66,6 +71,7 @@ function Ticket({
         Hide
       </button>
       <input
+        checked={isDone}
         className="checkbox"
         onChange={(e) => isDoneHandler(e.target)}
         type="checkbox"
