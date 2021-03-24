@@ -46,6 +46,7 @@ function Main(props) {
       {(goodAlert || badAlert) && (
         <SimpleAlerts goodAlert={goodAlert} badAlert={badAlert} />
       )}
+      <h1 id="main-title">Tickets Manager</h1>
       <input
         onChange={(e) => onInputChange(e.target.value)}
         id="searchInput"
