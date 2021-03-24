@@ -107,7 +107,6 @@ describe(projectName, () => {
   });
 
   test("Can add a new ticket", async () => {
-    const id = mongoose.Types.ObjectId();
     const myTicket = {
       title: "test title",
       content: "test body",

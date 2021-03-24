@@ -67,4 +67,15 @@ router.post("/", async (req, res) => {
   return res.status(200).json({ Message: "Ticket added" });
 });
 
+//Delete ticket by id
+router.delete("/:ticketId", async (req, res) => {
+  const { ticketId } = req.params;
+  try {
+    await Ticket.findOneAndDelete({ _id: ticketId });
+  } catch (error) {
+    return res.status(500).json({ Error: error.massage });
+  }
+  return res.status(200).json({ message: "Ticket deleted successfully" });
+});
+
 module.exports = router;
