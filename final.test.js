@@ -119,7 +119,7 @@ describe(projectName, () => {
     const ticket = await Ticket.find({ title: "test title" });
     myId = ticket[0]._id;
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ Message: "Ticket added" });
+    expect(response.body.message).toBe("Ticket added");
     expect(ticket[0].title).toBe("test title");
   });
 

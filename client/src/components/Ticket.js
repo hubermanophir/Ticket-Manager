@@ -8,6 +8,8 @@ function Ticket({
   hiddenCounter,
   setTicketsArray,
   ticketsArray,
+  setLiveTicketsLength,
+  liveTicketsLength,
 }) {
   const [isDone, setIsDone] = useState(false);
 
@@ -23,6 +25,7 @@ function Ticket({
     tempTicketsArr.splice(ticketIndex, 1);
     setTicketsArray(tempTicketsArr);
     setHiddenCounter(hiddenCounter + 1);
+    setLiveTicketsLength(liveTicketsLength - 1);
   };
 
   const isDoneHandler = (e) => {
@@ -38,7 +41,6 @@ function Ticket({
   const deleteHandler = (e) => {
     const ticketDiv = e.parentElement;
     const id = ticketDiv.childNodes[1].innerText;
-    console.log(id);
     (async () => {
       try {
         await axios.delete(`/api/tickets/${id}`);
@@ -48,6 +50,7 @@ function Ticket({
       const res = await axios.get(`/api/tickets/`);
       setTicketsArray(res.data);
     })();
+    setLiveTicketsLength(liveTicketsLength - 1);
   };
 
   return (

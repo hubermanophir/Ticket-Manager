@@ -2,18 +2,26 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Ticket from "./Ticket";
+import AddNew from "./AddNew";
 const BASE_URL = "/api/tickets";
 
 function Main(props) {
   const [ticketsArray, setTicketsArray] = useState([]);
   const [hiddenCounter, setHiddenCounter] = useState(0);
   const [tempArray, setTempArray] = useState([]);
+  const [liveTicketsLength, setLiveTicketsLength] = useState("0");
 
   useEffect(() => {
     (async function loadTickets() {
       const res = await axios.get(BASE_URL);
+      res.data.sort((a, b) => {
+        const dateA = new Date(a.creationTime),
+          dateB = new Date(b.creationTime);
+        return dateB - dateA;
+      });
       setTicketsArray(res.data);
       setTempArray(res.data);
+      setLiveTicketsLength(res.data.length);
     })();
     setHiddenCounter(0);
   }, []);
@@ -26,6 +34,7 @@ function Main(props) {
   const restoreHandler = () => {
     setHiddenCounter(0);
     setTicketsArray(tempArray);
+    setLiveTicketsLength(tempArray.length)
   };
 
   return (
@@ -35,6 +44,8 @@ function Main(props) {
         id="searchInput"
         type="text"
       />
+      <AddNew setTicketsArray={setTicketsArray} liveTicketsLength={liveTicketsLength} setLiveTicketsLength={setLiveTicketsLength}/>
+      <div className="ticket-number-div">{liveTicketsLength}</div>
       <div id="counter-div">
         Number of hidden tickets:
         <span id="hideTicketsCounter">{hiddenCounter}</span>
@@ -52,6 +63,8 @@ function Main(props) {
               hiddenCounter={hiddenCounter}
               setTicketsArray={setTicketsArray}
               ticketsArray={ticketsArray}
+              setLiveTicketsLength={setLiveTicketsLength}
+              liveTicketsLength={liveTicketsLength}
             />
           );
         })}

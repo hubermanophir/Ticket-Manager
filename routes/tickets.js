@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
   try {
     ticketsArray = await Ticket.find({});
   } catch (error) {
-    return res.status(500).json({ Error: error.massage });
+    return res.status(500).json({ error: error.massage });
   }
   return res.status(200).json(ticketsArray);
 });
@@ -29,12 +29,12 @@ router.get("/", async (req, res) => {
 router.patch("/:ticketId/:isDone", async (req, res) => {
   const { ticketId, isDone } = req.params;
   if (isDone !== "done" && isDone !== "undone") {
-    return res.status(400).json({ Error: "Must be done or undone" });
+    return res.status(400).json({ error: "Must be done or undone" });
   }
   try {
     await Ticket.findById(ticketId);
   } catch (error) {
-    return res.status(404).json({ Error: "Ticket not found" });
+    return res.status(404).json({ error: "Ticket not found" });
   }
   await Ticket.findByIdAndUpdate(
     ticketId,
@@ -42,7 +42,7 @@ router.patch("/:ticketId/:isDone", async (req, res) => {
     { new: true },
     (err) => {
       if (err) {
-        return res.status(500).json({ Error: err.massage });
+        return res.status(500).json({ error: err.massage });
       }
     }
   );
@@ -65,9 +65,12 @@ router.post("/", async (req, res) => {
   try {
     await ticket.save();
   } catch (error) {
-    return res.status(500).json({ Error: error.massage });
+    return res.status(500).json({ error: error.massage });
   }
-  return res.status(200).json({ Message: "Ticket added" });
+  const ticketArray = await Ticket.find({});
+  return res
+    .status(200)
+    .json({ message: "Ticket added", newArray: ticketArray });
 });
 
 //Delete ticket by id
@@ -81,7 +84,7 @@ router.delete("/:ticketId", async (req, res) => {
   try {
     await Ticket.findOneAndDelete({ _id: ticketId });
   } catch (error) {
-    return res.status(500).json({ Error: error.massage });
+    return res.status(500).json({ error: error.massage });
   }
   return res.status(200).json({ message: "Ticket deleted successfully" });
 });
