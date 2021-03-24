@@ -27,7 +27,7 @@ function Ticket({
       <div className="ticket-info">
         <span className="user-email">{ticket.userEmail}</span>
         <span className="done-status">{ticket.done}</span>
-        <span className="ticket-time">{ticket.creationTime}</span>
+        <span className="ticket-time">{formatDate(new Date(ticket.creationTime))}</span>
       </div>
       <div className="label-div">
         {ticket.labels
@@ -43,7 +43,6 @@ function Ticket({
       <button onClick={(e) => hideClickHandle(e)} className="hideTicketButton">
         Hide
       </button>
-      {/* <button className={isDone ? "done" : "undone"}>{isDone ?  : "Done"}</button> */}
       <input
         checked={isDone}
         className="checkbox"
@@ -52,6 +51,17 @@ function Ticket({
       ></input>
     </div>
   );
+}
+
+//Helper functions---------------------------------------------------------
+const formatDate = (myDate) => {
+  const date = ('0' + myDate.getDate()).slice(-2);
+  const month = ('0' + (myDate.getMonth() + 1)).slice(-2);
+  const year = myDate.getFullYear();
+  const hours = ('0' + myDate.getHours()).slice(-2);
+  const minutes = ('0' + myDate.getMinutes()).slice(-2);
+  const seconds = ('0' + myDate.getSeconds()).slice(-2);
+  return `${date}/${month}/${year}, ${hours}:${minutes}:${seconds}`;
 }
 
 export default Ticket;
