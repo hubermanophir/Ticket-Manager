@@ -71,6 +71,11 @@ router.post("/", async (req, res) => {
 router.delete("/:ticketId", async (req, res) => {
   const { ticketId } = req.params;
   try {
+    await Ticket.findById(ticketId);
+  } catch (error) {
+    return res.status(404).json({Error:"Ticket not found"})
+  }
+  try {
     await Ticket.findOneAndDelete({ _id: ticketId });
   } catch (error) {
     return res.status(500).json({ Error: error.massage });

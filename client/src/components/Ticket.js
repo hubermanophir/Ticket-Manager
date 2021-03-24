@@ -20,6 +20,10 @@ function Ticket({
     setHiddenCounter(hiddenCounter + 1);
   };
 
+  const deleteHandler = () => {
+    
+  }
+
   return (
     <div className={`ticket ${isDone ? "done" : "undone"}`}>
       <div className="title">{ticket.title}</div>
@@ -49,6 +53,7 @@ function Ticket({
         onChange={() => setIsDone(!isDone)}
         type="checkbox"
       ></input>
+      <button onClick = {() => deleteHandler()} className="delete">Delete</button>
     </div>
   );
 }
