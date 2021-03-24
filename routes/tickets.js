@@ -28,6 +28,9 @@ router.get("/", async (req, res) => {
 //Mark between done and undone
 router.patch("/:ticketId/:isDone", async (req, res) => {
   const { ticketId, isDone } = req.params;
+  if (isDone !== "done" && isDone !== "undone") {
+    return res.status(400).json({ Error: "Must be done or undone" });
+  }
   try {
     await Ticket.findById(ticketId);
   } catch (error) {
@@ -73,7 +76,7 @@ router.delete("/:ticketId", async (req, res) => {
   try {
     await Ticket.findById(ticketId);
   } catch (error) {
-    return res.status(404).json({Error:"Ticket not found"})
+    return res.status(404).json({ Error: "Ticket not found" });
   }
   try {
     await Ticket.findOneAndDelete({ _id: ticketId });
