@@ -48,7 +48,13 @@ function Ticket({
         console.log(err.message);
       }
       const res = await axios.get(`/api/tickets/`);
-      setTicketsArray(res.data);
+      const target = e.parentNode;
+      const ticketArr = Array.from(document.querySelectorAll(".ticket"));
+      const ticketIndex = ticketArr.indexOf(target);
+      const tempTicketsArr = [...ticketsArray];
+      tempTicketsArr.splice(ticketIndex, 1);
+      setTicketsArray(tempTicketsArr);
+      // setTicketsArray(res.data);
     })();
     setLiveTicketsLength(liveTicketsLength - 1);
   };
