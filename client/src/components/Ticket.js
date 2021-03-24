@@ -37,10 +37,17 @@ function Ticket({
 
   const deleteHandler = (e) => {
     const ticketDiv = e.parentElement;
-    const title = ticketDiv.firstChild.innerText;
-    console.log(title);
-    // const id = Ticket.find
-    // const res = axios.delete("/api/tickets/");
+    const id = ticketDiv.childNodes[1].innerText;
+    console.log(id);
+    (async () => {
+      try {
+        await axios.delete(`/api/tickets/${id}`);
+      } catch (err) {
+        console.log(err.message);
+      }
+      const res = await axios.get(`/api/tickets/`);
+      setTicketsArray(res.data);
+    })();
   };
 
   return (
