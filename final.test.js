@@ -7,6 +7,7 @@ const app = require("./app");
 const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
 const seed = require("./seeder");
+const Ticket = require("./models/Ticket");
 let mongoClient;
 let DB;
 let tickets;
@@ -103,5 +104,21 @@ describe(projectName, () => {
     expect(undoneBody.updated).toBe(true);
     const revertedTicket = await tickets.findOne({});
     expect(revertedTicket.done).toBe(currentState);
+  });
+
+  test("Can add a new ticket", async () => {
+    const id = mongoose.Types.ObjectId();
+    const myTicket = {
+      title: "test title",
+      content: "test body",
+      userEmail: "ofir@mail.com",
+      done: false,
+      labels: [1, 2, 3, 4],
+    };
+    const response = await request(app).post("/api/tickets").send(myTicket);
+    expect(response.status).toBe(200);
+    const ticket = await Ticket.find({ title: "test title" });
+    console.log(ticket);
+    expect(response.body).toEqual({ Message: "Ticket added" });
   });
 });
