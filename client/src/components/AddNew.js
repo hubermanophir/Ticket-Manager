@@ -10,7 +10,13 @@ import {
   Button,
 } from "@material-ui/core";
 
-function AddNew({ setTicketsArray, setLiveTicketsLength, liveTicketsLength }) {
+function AddNew({
+  setTicketsArray,
+  setLiveTicketsLength,
+  liveTicketsLength,
+  setBadAlert,
+  setGoodAlert,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const userTicket = {
@@ -28,17 +34,28 @@ function AddNew({ setTicketsArray, setLiveTicketsLength, liveTicketsLength }) {
   };
 
   const submit = () => {
+    if (!userTicket.title || !userTicket.content) {
+      return;
+    }
     (async () => {
       try {
         const res = await axios.post("/api/tickets", userTicket);
-        console.log(res.data.newArray);
+        setGoodAlert(true);
+        setTimeout(() => {
+          setGoodAlert(false);
+        }, 3000);
         res.data.newArray.sort((a, b) => {
           const dateA = new Date(a.creationTime),
             dateB = new Date(b.creationTime);
           return dateB - dateA;
         });
         setTicketsArray(res.data.newArray);
-      } catch (error) {}
+      } catch (error) {
+        setBadAlert(true);
+        setTimeout(() => {
+          setBadAlert(false);
+        }, 3000);
+      }
     })();
     setLiveTicketsLength(liveTicketsLength + 1);
     closeDialog();
@@ -94,7 +111,6 @@ function AddNew({ setTicketsArray, setLiveTicketsLength, liveTicketsLength }) {
             }}
             variant="outlined"
             fullWidth
-            required
           />
           <TextField
             id="labels"

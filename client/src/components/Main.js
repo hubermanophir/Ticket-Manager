@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Ticket from "./Ticket";
 import AddNew from "./AddNew";
 import SplitButton from "./SplitButton";
+import SimpleAlerts from "./SimpleAlerts";
 const BASE_URL = "/api/tickets";
 
 function Main(props) {
@@ -11,6 +12,8 @@ function Main(props) {
   const [hiddenCounter, setHiddenCounter] = useState(0);
   const [tempArray, setTempArray] = useState([]);
   const [liveTicketsLength, setLiveTicketsLength] = useState("0");
+  const [goodAlert, setGoodAlert] = useState(false);
+  const [badAlert, setBadAlert] = useState(false);
 
   useEffect(() => {
     (async function loadTickets() {
@@ -40,6 +43,9 @@ function Main(props) {
 
   return (
     <div className="main-div">
+      {(goodAlert || badAlert) && (
+        <SimpleAlerts goodAlert={goodAlert} badAlert={badAlert} />
+      )}
       <input
         onChange={(e) => onInputChange(e.target.value)}
         id="searchInput"
@@ -53,6 +59,8 @@ function Main(props) {
         setTicketsArray={setTicketsArray}
         liveTicketsLength={liveTicketsLength}
         setLiveTicketsLength={setLiveTicketsLength}
+        setBadAlert={setBadAlert}
+        setGoodAlert={setGoodAlert}
       />
       <div className="ticket-number-div">{liveTicketsLength}</div>
       <div id="counter-div">
