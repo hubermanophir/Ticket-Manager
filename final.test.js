@@ -11,6 +11,7 @@ const Ticket = require("./models/Ticket");
 let mongoClient;
 let DB;
 let tickets;
+let myId;
 
 const connectToMongoDB = async () => {
   mongoClient = new MongoClient(process.env.TEST_MONGO_URI, {
@@ -116,8 +117,15 @@ describe(projectName, () => {
     };
     const response = await request(app).post("/api/tickets").send(myTicket);
     const ticket = await Ticket.find({ title: "test title" });
+    myId = ticket[0]._id;
     expect(response.status).toBe(200);
     expect(response.body).toEqual({ Message: "Ticket added" });
-    expect(ticket[0].title).toBe("test title")
+    expect(ticket[0].title).toBe("test title");
+  });
+
+  test("Can delete a ticket", async (done) => {
+    const response = await request(app).delete(`/api/tickets/${myId}`);
+    expect(response.status).toBe(200);
+    done();
   });
 });
