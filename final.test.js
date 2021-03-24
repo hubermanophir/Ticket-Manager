@@ -116,9 +116,9 @@ describe(projectName, () => {
       labels: [1, 2, 3, 4],
     };
     const response = await request(app).post("/api/tickets").send(myTicket);
-    expect(response.status).toBe(200);
     const ticket = await Ticket.find({ title: "test title" });
-    console.log(ticket);
+    expect(response.status).toBe(200);
     expect(response.body).toEqual({ Message: "Ticket added" });
+    expect(ticket[0].title).toBe("test title")
   });
 });
