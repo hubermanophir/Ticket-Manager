@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Ticket({
   ticket,
@@ -8,6 +8,8 @@ function Ticket({
   setTicketsArray,
   ticketsArray,
 }) {
+  const [isDone, setIsDone] = useState(false);
+
   const hideClickHandle = (e) => {
     const target = e.target.parentNode;
     const ticketArr = Array.from(document.querySelectorAll(".ticket"));
@@ -19,7 +21,7 @@ function Ticket({
   };
 
   return (
-    <div className="ticket">
+    <div className={`ticket ${isDone ? "done" : "undone"}`}>
       <div className="title">{ticket.title}</div>
       <div className="content">{ticket.content}</div>
       <div className="ticket-info">
@@ -41,6 +43,13 @@ function Ticket({
       <button onClick={(e) => hideClickHandle(e)} className="hideTicketButton">
         Hide
       </button>
+      {/* <button className={isDone ? "done" : "undone"}>{isDone ?  : "Done"}</button> */}
+      <input
+        checked={isDone}
+        className="checkbox"
+        onChange={() => setIsDone(!isDone)}
+        type="checkbox"
+      ></input>
     </div>
   );
 }
