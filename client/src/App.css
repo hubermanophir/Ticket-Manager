@@ -1,7 +1,3 @@
-html {
-  overflow-x: hidden;
-}
-
 body {
   width: 85%;
   margin: auto;
@@ -18,6 +14,16 @@ body {
   opacity: 1;
 }
 
+.ticket-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .ticket {
   width: 33em;
   text-align: center;
@@ -27,5 +33,13 @@ body {
 .title {
   font-weight: bolder;
   font-size: larger;
+}
+
+.content {
+  overflow-wrap: break-word;
+}
+
+#alert-dialog-description {
+  overflow-wrap: break-word;
 }
 /*# sourceMappingURL=App.css.map */

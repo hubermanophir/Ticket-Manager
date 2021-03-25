@@ -47,30 +47,32 @@ function Main(props) {
         <SimpleAlerts goodAlert={goodAlert} badAlert={badAlert} />
       )}
       <h1 id="main-title">Tickets Manager</h1>
-      <input
-        onChange={(e) => onInputChange(e.target.value)}
-        id="searchInput"
-        type="text"
-      />
-      <DisableElevation
-        ticketsArray={ticketsArray}
-        setTicketsArray={setTicketsArray}
-      />
-      <AddNew
-        setTicketsArray={setTicketsArray}
-        liveTicketsLength={liveTicketsLength}
-        setLiveTicketsLength={setLiveTicketsLength}
-        setBadAlert={setBadAlert}
-        setGoodAlert={setGoodAlert}
-      />
-      <div className="ticket-number-div">{liveTicketsLength}</div>
-      <div id="counter-div">
-        Number of hidden tickets:
-        <span id="hideTicketsCounter">{hiddenCounter}</span>
+      <div>
+        <input
+          onChange={(e) => onInputChange(e.target.value)}
+          id="searchInput"
+          type="text"
+        />
+        <DisableElevation
+          ticketsArray={ticketsArray}
+          setTicketsArray={setTicketsArray}
+        />
+        <AddNew
+          setTicketsArray={setTicketsArray}
+          liveTicketsLength={liveTicketsLength}
+          setLiveTicketsLength={setLiveTicketsLength}
+          setBadAlert={setBadAlert}
+          setGoodAlert={setGoodAlert}
+        />
+        <div className="ticket-number-div">{liveTicketsLength}</div>
+        <div id="counter-div">
+          Number of hidden tickets:
+          <span id="hideTicketsCounter">{hiddenCounter}</span>
+        </div>
+        <button id="restoreHideTickets" onClick={() => restoreHandler()}>
+          restore
+        </button>
       </div>
-      <button id="restoreHideTickets" onClick={() => restoreHandler()}>
-        restore
-      </button>
       <div className="ticket-area">
         {ticketsArray.map((ticket, i) => {
           return (

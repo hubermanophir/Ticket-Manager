@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import AlertDialog from "./AlertDialog";
 
 function Ticket({
   ticket,
@@ -12,13 +13,16 @@ function Ticket({
   liveTicketsLength,
 }) {
   const [isDone, setIsDone] = useState(false);
+  const [ticketContent, setTicketContent] = useState(ticket.content);
 
   useEffect(() => {
     setIsDone(ticket.done);
+    checkContentLength();
   }, []);
 
   useEffect(() => {
     setIsDone(ticket.done);
+    checkContentLength();
   }, [ticketsArray]);
 
   const hideClickHandle = (e) => {
@@ -34,6 +38,7 @@ function Ticket({
 
   const isDoneHandler = (e) => {
     setIsDone(!isDone);
+    ticket.done = !isDone;
     (async () => {
       const ticket = e.parentElement;
       const id = ticket.childNodes[0].innerText;
@@ -61,11 +66,19 @@ function Ticket({
     setLiveTicketsLength(liveTicketsLength - 1);
   };
 
+  const checkContentLength = () => {
+    if (ticket.content.length >= 400) {
+      const newTicket = ticket.content.slice(0, 299) + "...";
+      setTicketContent(newTicket);
+    } else {
+      setTicketContent(ticket.content);
+    }
+  };
   return (
     <div className={`ticket ${isDone ? "done" : "undone"}`}>
       <span className="id" hidden={true}>{`${ticket._id}`}</span>
       <div className="title">{ticket.title}</div>
-      <div className="content">{ticket.content}</div>
+      <div className="content">{ticketContent}</div>
       <div className="ticket-info">
         <span className="user-email">{ticket.userEmail}</span>
         <span className="done-status">{ticket.done}</span>
@@ -99,6 +112,7 @@ function Ticket({
         onChange={(e) => isDoneHandler(e.target)}
         type="checkbox"
       ></input>
+      <AlertDialog formatDate={formatDate} ticket={ticket} />
     </div>
   );
 }
