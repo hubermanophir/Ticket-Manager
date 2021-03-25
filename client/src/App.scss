@@ -1,10 +1,9 @@
+html{
+    overflow-x: hidden;
+}
 body {
   width: 85%;
   margin: auto;
-}
-.title {
-  font-weight: bolder;
-  font-size: larger;
 }
 .alert {
   position: fixed;
@@ -14,5 +13,19 @@ body {
   -ms-transition: opacity 3s ease-in-out;
   -o-transition: opacity 3s ease-in-out;
    opacity: 1;
+}
+// .ticket-area{
+//     display: flex;
+//     flex-wrap:wrap; 
+//     justify-content: space-around;
+// }
+.ticket{
+    width: 33em;
+    text-align: center;
+    height: 25em;
+}
+.title {
+  font-weight: bolder;
+  font-size: larger;
 }
 

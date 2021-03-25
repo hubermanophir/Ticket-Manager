@@ -17,8 +17,12 @@ function Ticket({
     setIsDone(ticket.done);
   }, []);
 
+  useEffect(() => {
+    setIsDone(ticket.done);
+  }, [ticketsArray]);
+
   const hideClickHandle = (e) => {
-    const target = e.target.parentNode;
+    const target = e.parentNode;
     const ticketArr = Array.from(document.querySelectorAll(".ticket"));
     const ticketIndex = ticketArr.indexOf(target);
     const tempTicketsArr = [...ticketsArray];
@@ -80,7 +84,10 @@ function Ticket({
             })
           : null}
       </div>
-      <button onClick={(e) => hideClickHandle(e)} className="hideTicketButton">
+      <button
+        onClick={(e) => hideClickHandle(e.target)}
+        className="hideTicketButton"
+      >
         Hide
       </button>
       <button onClick={(e) => deleteHandler(e.target)} className="delete">

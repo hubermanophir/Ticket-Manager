@@ -1,11 +1,10 @@
+html {
+  overflow-x: hidden;
+}
+
 body {
   width: 85%;
   margin: auto;
-}
-
-.title {
-  font-weight: bolder;
-  font-size: larger;
 }
 
 .alert {
@@ -17,5 +16,16 @@ body {
   -ms-transition: opacity 3s ease-in-out;
   -o-transition: opacity 3s ease-in-out;
   opacity: 1;
+}
+
+.ticket {
+  width: 33em;
+  text-align: center;
+  height: 25em;
+}
+
+.title {
+  font-weight: bolder;
+  font-size: larger;
 }
 /*# sourceMappingURL=App.css.map */
