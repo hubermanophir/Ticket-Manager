@@ -1,22 +1,4 @@
-html {
-  scroll-behavior: smooth;
-}
-
-body{
-    width: 85%;
-    margin :auto;
-}
-.ticket{
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-}
-.title {
-  font-weight: bolder;
-  font-size: larger;
-  text-align: center;
-}
-.MuiGrid-container{
-    position: absolute;
-    width: min-content;
+.title{
+    font-weight: bolder;
+    font-size: larger;
 }

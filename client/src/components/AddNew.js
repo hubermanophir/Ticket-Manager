@@ -107,7 +107,7 @@ function AddNew({
             margin="normal"
             helperText="Your e-mail address will be shown on the ticket"
             onChange={(e) => {
-              userTicket.userEmail = e.target.value;
+              userTicket.email = e.target.value;
             }}
             variant="outlined"
             fullWidth

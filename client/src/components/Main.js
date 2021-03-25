@@ -3,8 +3,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Ticket from "./Ticket";
 import AddNew from "./AddNew";
+import SplitButton from "./SplitButton";
 import SimpleAlerts from "./SimpleAlerts";
-import DisableElevation from "./DisableElevation";
 const BASE_URL = "/api/tickets";
 
 function Main(props) {
@@ -51,9 +51,8 @@ function Main(props) {
         onChange={(e) => onInputChange(e.target.value)}
         id="searchInput"
         type="text"
-        placeholder="Ticket title"
       />
-      <DisableElevation
+      <SplitButton
         setTicketsArray={setTicketsArray}
         ticketsArray={ticketsArray}
       />
