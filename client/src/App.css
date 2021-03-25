@@ -105,19 +105,27 @@ body {
 }
 
 .hideTicketButton {
-  font-size: 1.2em;
+  font-size: 1em;
   cursor: pointer;
   position: absolute;
   top: 1em;
   left: 1em;
+  background-color: #3f51b5;
+  color: white;
+  padding: 0.2em 0.4em;
+  border-radius: 5px;
 }
 
 .delete {
-  font-size: 1.2em;
+  font-size: 1em;
   cursor: pointer;
   position: absolute;
   top: 1em;
-  left: 4em;
+  left: 4.5em;
+  background-color: #3f51b5;
+  color: white;
+  padding: 0.2em 0.4em;
+  border-radius: 5px;
 }
 
 input[type=checkbox] {
