@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import AlertDialog from "./AlertDialog";
+import Button from "@material-ui/core/Button";
 
 function Ticket({
   ticket,
@@ -97,15 +98,20 @@ function Ticket({
             })
           : null}
       </div>
-      <button
+      <Button
+        variant="outlined"
         onClick={(e) => hideClickHandle(e.target)}
         className="hideTicketButton"
       >
         Hide
-      </button>
-      <button onClick={(e) => deleteHandler(e.target)} className="delete">
+      </Button>
+      <Button
+        variant="outlined"
+        onClick={(e) => deleteHandler(e.target)}
+        className="delete"
+      >
         Delete
-      </button>
+      </Button>
       <input
         checked={isDone}
         className="checkbox"

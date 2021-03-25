@@ -5,6 +5,7 @@ import Ticket from "./Ticket";
 import AddNew from "./AddNew";
 import SimpleAlerts from "./SimpleAlerts";
 import DisableElevation from "./DisableElevation";
+import Button from "@material-ui/core/Button";
 const BASE_URL = "/api/tickets";
 
 function Main(props) {
@@ -69,9 +70,14 @@ function Main(props) {
           Number of hidden tickets:
           <span id="hideTicketsCounter">{hiddenCounter}</span>
         </div>
-        <button id="restoreHideTickets" onClick={() => restoreHandler()}>
+        <Button
+          variant="contained"
+          color="primary"
+          id="restoreHideTickets"
+          onClick={() => restoreHandler()}
+        >
           restore
-        </button>
+        </Button>
         <div className="ticket-number-div">-{liveTicketsLength} results-</div>
       </div>
       <div className="ticket-area">

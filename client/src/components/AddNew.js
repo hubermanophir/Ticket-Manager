@@ -63,7 +63,13 @@ function AddNew({
 
   return (
     <div>
-      <button onClick={() => clickHandler()}>Add new</button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => clickHandler()}
+      >
+        Add new
+      </Button>
       <Dialog
         open={isOpen}
         onClose={closeDialog}
