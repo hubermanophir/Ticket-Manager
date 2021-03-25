@@ -26,6 +26,18 @@ body {
   opacity: 1;
 }
 
+#main-title {
+  font-size: 4em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 3em;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -44,8 +56,20 @@ body {
   }
 }
 
+#spinner {
+  z-index: 10;
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .control-container {
   position: relative;
+  background-color: rgba(41, 57, 148, 0.8);
+  padding: 3em 1em;
+  border-radius: 10px;
 }
 
 #button-container {
@@ -57,10 +81,17 @@ body {
   margin: auto;
 }
 
+#hideTicketsCounter {
+  font-size: larger;
+}
+
 .ticket-number-div {
   margin: auto;
   padding: auto;
   text-align: center;
+  margin-top: 1em;
+  margin-bottom: -1.5em;
+  font-size: larger;
 }
 
 input[type="text"] {
@@ -74,12 +105,6 @@ input[type="text"] {
 .add-new-div {
   text-align: center;
   margin-bottom: 1em;
-}
-
-#restoreHideTickets {
-  display: inline;
-  position: relative;
-  top: 2.6em;
 }
 
 .ticket-area {
@@ -257,6 +282,23 @@ input[type="checkbox"] {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  input[type="text"] {
+    padding: 0.2em 1em;
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 5px;
+    border-width: 0.5px;
+  }
+  #main-title {
+    font-size: 2em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  h2 {
+    font-size: 1em;
+    margin-bottom: 3em;
+    font-family: "Lucida Console", "Courier New", monospace;
   }
 }
 /*# sourceMappingURL=App.css.map */

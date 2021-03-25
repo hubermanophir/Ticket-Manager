@@ -6,6 +6,7 @@ import AddNew from "./AddNew";
 import SimpleAlerts from "./SimpleAlerts";
 import DisableElevation from "./DisableElevation";
 import Button from "@material-ui/core/Button";
+import CircularIndeterminate from "./CircularIndeterminate";
 const BASE_URL = "/api/tickets";
 
 function Main(props) {
@@ -15,10 +16,13 @@ function Main(props) {
   const [liveTicketsLength, setLiveTicketsLength] = useState("0");
   const [goodAlert, setGoodAlert] = useState(false);
   const [badAlert, setBadAlert] = useState(false);
+  const [displaySpinner, setDisplaySpinner] = useState(false);
 
   useEffect(() => {
     (async function loadTickets() {
+      setDisplaySpinner(true);
       const res = await axios.get(BASE_URL);
+      setDisplaySpinner(false);
       res.data.sort((a, b) => {
         const dateA = new Date(a.creationTime),
           dateB = new Date(b.creationTime);
@@ -48,7 +52,9 @@ function Main(props) {
       {(goodAlert || badAlert) && (
         <SimpleAlerts goodAlert={goodAlert} badAlert={badAlert} />
       )}
-      <h1 id="main-title">Tickets Manager</h1>
+      {displaySpinner && <CircularIndeterminate />}
+      <h1 id="main-title">Ticket Manager</h1>
+      <h2>My Way</h2>
       <div className="control-container">
         <DisableElevation
           ticketsArray={ticketsArray}

@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import AlertDialog from "./AlertDialog";
-import Button from "@material-ui/core/Button";
 
 function Ticket({
   ticket,

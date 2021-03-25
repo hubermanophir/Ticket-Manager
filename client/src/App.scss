@@ -20,6 +20,16 @@ body {
   animation: fadeIn 1s;
   opacity: 1;
 }
+#main-title {
+  font-size: 4em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+h2 {
+  font-size: 2em;
+  margin-bottom: 3em;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -28,8 +38,18 @@ body {
     opacity: 1;
   }
 }
+#spinner {
+  z-index: 10;
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .control-container {
   position: relative;
+  background-color: hsla(231, 57%, 37%, 0.8);
+  padding: 3em 1em;
+  border-radius: 10px;
 }
 
 #button-container {
@@ -39,10 +59,16 @@ body {
   display: block;
   margin: auto;
 }
+#hideTicketsCounter {
+  font-size: larger;
+}
 .ticket-number-div {
   margin: auto;
   padding: auto;
   text-align: center;
+  margin-top: 1em;
+  margin-bottom: -1.5em;
+  font-size: larger;
 }
 input[type="text"] {
   padding: 0.2em 3em;
@@ -51,15 +77,9 @@ input[type="text"] {
   border-radius: 5px;
   border-width: 0.5px;
 }
-.add-new-div{
-    text-align: center;
-    margin-bottom: 1em;
-}
-#restoreHideTickets{
-    display: inline;
-    position: relative;
-    top: 2.6em;
-    
+.add-new-div {
+  text-align: center;
+  margin-bottom: 1em;
 }
 .ticket-area {
   display: flex;
@@ -194,5 +214,22 @@ input[type="checkbox"] {
   .control-container {
     display: flex;
     flex-direction: column;
+  }
+  input[type="text"] {
+    padding: 0.2em 1em;
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 5px;
+    border-width: 0.5px;
+  }
+  #main-title {
+    font-size: 2em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  h2 {
+    font-size: 1em;
+    margin-bottom: 3em;
+    font-family: "Lucida Console", "Courier New", monospace;
   }
 }
