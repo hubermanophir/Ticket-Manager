@@ -24,11 +24,13 @@ body {
   font-size: 4em;
   margin-top: 1em;
   margin-bottom: 0.5em;
+  color: #3f51b5;
 }
 h2 {
   font-size: 2em;
   margin-bottom: 3em;
   font-family: "Lucida Console", "Courier New", monospace;
+
 }
 @keyframes fadeIn {
   from {
@@ -47,7 +49,7 @@ h2 {
 }
 .control-container {
   position: relative;
-  background-color: hsla(231, 57%, 37%, 0.8);
+  background-color: #293994;
   padding: 3em 1em;
   border-radius: 10px;
 }

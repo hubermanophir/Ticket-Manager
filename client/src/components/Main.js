@@ -18,10 +18,19 @@ function Main(props) {
   const [badAlert, setBadAlert] = useState(false);
   const [displaySpinner, setDisplaySpinner] = useState(false);
 
+  //On page load
   useEffect(() => {
     (async function loadTickets() {
       setDisplaySpinner(true);
-      const res = await axios.get(BASE_URL);
+      let res;
+      try {
+        res = await axios.get(BASE_URL);
+      } catch (error) {
+        setBadAlert(true);
+        setTimeout(() => {
+          setBadAlert(false);
+        }, 3000);
+      }
       setDisplaySpinner(false);
       res.data.sort((a, b) => {
         const dateA = new Date(a.creationTime),
@@ -36,6 +45,7 @@ function Main(props) {
     setHiddenCounter(0);
   }, []);
 
+  //Handles the user input
   const onInputChange = async (input) => {
     let res;
     try {
@@ -44,7 +54,7 @@ function Main(props) {
       setBadAlert(true);
       setTimeout(() => {
         setBadAlert(false);
-      },3000);
+      }, 3000);
     }
     setLiveTicketsLength(res.data.length);
     setTicketsArray(res.data);

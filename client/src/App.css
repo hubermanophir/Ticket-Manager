@@ -30,6 +30,7 @@ body {
   font-size: 4em;
   margin-top: 1em;
   margin-bottom: 0.5em;
+  color: #3f51b5;
 }
 
 h2 {
@@ -67,7 +68,7 @@ h2 {
 
 .control-container {
   position: relative;
-  background-color: rgba(41, 57, 148, 0.8);
+  background-color: #293994;
   padding: 3em 1em;
   border-radius: 10px;
 }
