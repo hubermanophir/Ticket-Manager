@@ -54,7 +54,6 @@ function Ticket({
       const tempTicketsArr = [...ticketsArray];
       tempTicketsArr.splice(ticketIndex, 1);
       setTicketsArray(tempTicketsArr);
-      // setTicketsArray(res.data);
     })();
     setLiveTicketsLength(liveTicketsLength - 1);
   };
@@ -86,21 +85,22 @@ function Ticket({
       <button onClick={(e) => hideClickHandle(e)} className="hideTicketButton">
         Hide
       </button>
+      <button onClick={(e) => deleteHandler(e.target)} className="delete">
+        Delete
+      </button>
       <input
         checked={isDone}
         className="checkbox"
         onChange={(e) => isDoneHandler(e.target)}
         type="checkbox"
       ></input>
-      <button onClick={(e) => deleteHandler(e.target)} className="delete">
-        Delete
-      </button>
     </div>
   );
 }
 
 //Helper functions---------------------------------------------------------
 const formatDate = (myDate) => {
+  myDate.setHours(myDate.getHours() - 2);
   const date = ("0" + myDate.getDate()).slice(-2);
   const month = ("0" + (myDate.getMonth() + 1)).slice(-2);
   const year = myDate.getFullYear();
