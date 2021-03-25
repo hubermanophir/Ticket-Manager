@@ -62,7 +62,7 @@ function AddNew({
   };
 
   return (
-    <div>
+    <div className="add-new-div">
       <Button
         variant="contained"
         color="primary"

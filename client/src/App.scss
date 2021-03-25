@@ -44,6 +44,23 @@ body {
   padding: auto;
   text-align: center;
 }
+input[type="text"] {
+  padding: 0.2em 3em;
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: 5px;
+  border-width: 0.5px;
+}
+.add-new-div{
+    text-align: center;
+    margin-bottom: 1em;
+}
+#restoreHideTickets{
+    display: inline;
+    position: relative;
+    top: 2.6em;
+    
+}
 .ticket-area {
   display: flex;
   flex-wrap: wrap;
@@ -51,9 +68,9 @@ body {
   margin-top: 5em;
   gap: 1.5em;
 }
-.done{
-    opacity: 0.2;
-    transition: all 0.5s;
+.done {
+  opacity: 0.2;
+  transition: all 0.5s;
 }
 .ticket {
   flex-basis: 30%;
@@ -68,8 +85,8 @@ body {
   transition: all 0.5s;
 }
 .ticket:hover {
-    animation: pop 0.5s linear 1;
-  }
+  animation: pop 0.5s linear 1;
+}
 @keyframes pop {
   50% {
     transform: scale(1.05);
@@ -101,6 +118,10 @@ body {
   padding: 0.3em 0.5em;
   border-radius: 5px;
   border-width: 0;
+  &:hover {
+    background-color: #2b3985;
+    transition-duration: 0.3s;
+  }
 }
 .delete {
   font-size: 1em;
@@ -113,6 +134,10 @@ body {
   padding: 0.3em 0.5em;
   border-radius: 5px;
   border-width: 0;
+  &:hover {
+    background-color: #2b3985;
+    transition-duration: 0.3s;
+  }
 }
 input[type="checkbox"] {
   transform: scale(2);

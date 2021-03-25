@@ -50,26 +50,11 @@ function Main(props) {
       )}
       <h1 id="main-title">Tickets Manager</h1>
       <div className="control-container">
-        <input
-          onChange={(e) => onInputChange(e.target.value)}
-          id="searchInput"
-          type="text"
-        />
         <DisableElevation
           ticketsArray={ticketsArray}
           setTicketsArray={setTicketsArray}
         />
-        <AddNew
-          setTicketsArray={setTicketsArray}
-          liveTicketsLength={liveTicketsLength}
-          setLiveTicketsLength={setLiveTicketsLength}
-          setBadAlert={setBadAlert}
-          setGoodAlert={setGoodAlert}
-        />
-        <div id="counter-div">
-          Number of hidden tickets:
-          <span id="hideTicketsCounter">{hiddenCounter}</span>
-        </div>
+
         <Button
           variant="contained"
           color="primary"
@@ -78,7 +63,23 @@ function Main(props) {
         >
           restore
         </Button>
+        <AddNew
+          setTicketsArray={setTicketsArray}
+          liveTicketsLength={liveTicketsLength}
+          setLiveTicketsLength={setLiveTicketsLength}
+          setBadAlert={setBadAlert}
+          setGoodAlert={setGoodAlert}
+        />
+        <input
+          onChange={(e) => onInputChange(e.target.value)}
+          id="searchInput"
+          type="text"
+          placeholder="Search Task"
+        />
         <div className="ticket-number-div">-{liveTicketsLength} results-</div>
+        <div id="counter-div">
+          <span id="hideTicketsCounter">{hiddenCounter}</span> Hidden tickets
+        </div>
       </div>
       <div className="ticket-area">
         {ticketsArray.map((ticket, i) => {
