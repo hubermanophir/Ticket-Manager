@@ -32,11 +32,20 @@ function Main(props) {
       setTempArray(res.data);
       setLiveTicketsLength(res.data.length);
     })();
+    setBadAlert(false);
     setHiddenCounter(0);
   }, []);
 
   const onInputChange = async (input) => {
-    const res = await axios.get(`${BASE_URL}?searchText=${input}`);
+    let res;
+    try {
+      res = await axios.get(`${BASE_URL}?searchText=${input}`);
+    } catch (error) {
+      setBadAlert(true);
+      setTimeout(() => {
+        setBadAlert(false);
+      },3000);
+    }
     setLiveTicketsLength(res.data.length);
     setTicketsArray(res.data);
   };

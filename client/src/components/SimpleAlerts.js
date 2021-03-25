@@ -22,7 +22,7 @@ export default function SimpleAlerts({ goodAlert, badAlert }) {
         </Alert>
       ) : badAlert ? (
         <Alert className="alert" variant="filled" severity="error">
-          Ticket was not added Check your network connection!
+          Please check your network connection!
         </Alert>
       ) : null}
     </div>
