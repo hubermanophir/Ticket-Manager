@@ -98,20 +98,15 @@ function Ticket({
             })
           : null}
       </div>
-      <Button
-        variant="outlined"
+      <button
         onClick={(e) => hideClickHandle(e.target)}
         className="hideTicketButton"
       >
         Hide
-      </Button>
-      <Button
-        variant="outlined"
-        onClick={(e) => deleteHandler(e.target)}
-        className="delete"
-      >
+      </button>
+      <button onClick={(e) => deleteHandler(e.target)} className="delete">
         Delete
-      </Button>
+      </button>
       <input
         checked={isDone}
         className="checkbox"

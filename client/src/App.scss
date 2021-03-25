@@ -1,6 +1,18 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  max-width:1700px;
+  max-width: 1700px;
   margin: auto;
+}
+@media screen and (max-width: 992px) {
+  body {
+    width: 90%;
+  }
 }
 .alert {
   position: fixed;
@@ -19,16 +31,18 @@ body {
 .control-container {
   position: relative;
 }
+
 #button-container {
-  position: absolute;
-  right: 0;
+  float: right;
 }
 #searchInput {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+  //   position: absolute;
+  //   margin-left: auto;
+  //   margin-right: auto;
+  //   left: 0;
+  //   right: 0;
+  display: block;
+  margin: auto;
 }
 .ticket-number-div {
   margin: auto;
@@ -40,19 +54,43 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 5em;
+  gap: 1.5em;
 }
 .ticket {
-  width: 33em;
+  flex-basis: 30%;
   text-align: center;
   height: 25em;
+  background: hsla(0, 0%, 0%, 0.1);
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 1px 1px 4px 5px #ccc;
 }
 .title {
   font-weight: bolder;
   font-size: larger;
+  margin-top: 2em;
+  text-align: center;
 }
 .content {
+  width: 32em;
+  margin: auto;
   overflow-wrap: break-word;
+  text-align: center;
 }
 #alert-dialog-description {
   overflow-wrap: break-word;
+}
+@media screen and (max-width: 500px) {
+  //   * {
+  //     box-sizing: border-box;
+  //   }
+  .App {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  .control-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
