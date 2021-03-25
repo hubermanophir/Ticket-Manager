@@ -1,33 +1,58 @@
 body {
-  width: 85%;
+  max-width:1700px;
   margin: auto;
 }
 .alert {
   position: fixed;
   width: 80%;
-  transition: opacity 3s ease-in-out;
-  -moz-transition: opacity 3s ease-in-out;
-  -ms-transition: opacity 3s ease-in-out;
-  -o-transition: opacity 3s ease-in-out;
-   opacity: 1;
+  animation: fadeIn 1s;
+  opacity: 1;
 }
-.ticket-area{
-    display: flex;
-    flex-wrap:wrap; 
-    justify-content: space-around;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-.ticket{
-    width: 33em;
-    text-align: center;
-    height: 25em;
+.control-container {
+  position: relative;
+}
+#button-container {
+  position: absolute;
+  right: 0;
+}
+#searchInput {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.ticket-number-div {
+  margin: auto;
+  padding: auto;
+  text-align: center;
+}
+.ticket-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 5em;
+}
+.ticket {
+  width: 33em;
+  text-align: center;
+  height: 25em;
 }
 .title {
   font-weight: bolder;
   font-size: larger;
 }
-.content{
-    overflow-wrap: break-word;
+.content {
+  overflow-wrap: break-word;
 }
-#alert-dialog-description{
-    overflow-wrap: break-word;
+#alert-dialog-description {
+  overflow-wrap: break-word;
 }

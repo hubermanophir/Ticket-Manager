@@ -1,17 +1,55 @@
 body {
-  width: 85%;
+  max-width: 1700px;
   margin: auto;
 }
 
 .alert {
   position: fixed;
   width: 80%;
-  -webkit-transition: opacity 3s ease-in-out;
-  transition: opacity 3s ease-in-out;
-  -moz-transition: opacity 3s ease-in-out;
-  -ms-transition: opacity 3s ease-in-out;
-  -o-transition: opacity 3s ease-in-out;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
   opacity: 1;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.control-container {
+  position: relative;
+}
+
+#button-container {
+  position: absolute;
+  right: 0;
+}
+
+#searchInput {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.ticket-number-div {
+  margin: auto;
+  padding: auto;
+  text-align: center;
 }
 
 .ticket-area {
@@ -22,6 +60,7 @@ body {
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  margin-top: 5em;
 }
 
 .ticket {

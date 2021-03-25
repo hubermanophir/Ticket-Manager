@@ -32,6 +32,7 @@ function Main(props) {
 
   const onInputChange = async (input) => {
     const res = await axios.get(`${BASE_URL}?searchText=${input}`);
+    setLiveTicketsLength(res.data.length);
     setTicketsArray(res.data);
   };
 
@@ -47,7 +48,7 @@ function Main(props) {
         <SimpleAlerts goodAlert={goodAlert} badAlert={badAlert} />
       )}
       <h1 id="main-title">Tickets Manager</h1>
-      <div>
+      <div className="control-container">
         <input
           onChange={(e) => onInputChange(e.target.value)}
           id="searchInput"
@@ -64,7 +65,6 @@ function Main(props) {
           setBadAlert={setBadAlert}
           setGoodAlert={setGoodAlert}
         />
-        <div className="ticket-number-div">{liveTicketsLength}</div>
         <div id="counter-div">
           Number of hidden tickets:
           <span id="hideTicketsCounter">{hiddenCounter}</span>
@@ -72,6 +72,7 @@ function Main(props) {
         <button id="restoreHideTickets" onClick={() => restoreHandler()}>
           restore
         </button>
+        <div className="ticket-number-div">-{liveTicketsLength} results-</div>
       </div>
       <div className="ticket-area">
         {ticketsArray.map((ticket, i) => {

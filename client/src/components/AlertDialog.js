@@ -19,7 +19,12 @@ export default function AlertDialog({ ticket, formatDate }) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button
+        className="show-more"
+        variant="outlined"
+        color="primary"
+        onClick={handleClickOpen}
+      >
         Show More
       </Button>
       <Dialog
