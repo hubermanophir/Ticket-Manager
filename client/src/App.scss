@@ -61,6 +61,15 @@ body {
   -moz-box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow: 1px 1px 4px 5px #ccc;
   position: relative;
+  
+}
+.ticket:hover {
+    animation: pop 0.5s linear 1;
+  }
+@keyframes pop {
+  50% {
+    transform: scale(1.05);
+  }
 }
 .title {
   font-weight: bolder;
@@ -85,7 +94,7 @@ body {
   left: 1em;
   background-color: #3f51b5;
   color: white;
-  padding:0.2em 0.4em;
+  padding: 0.2em 0.4em;
   border-radius: 5px;
 }
 .delete {
@@ -96,51 +105,51 @@ body {
   left: 4.5em;
   background-color: #3f51b5;
   color: white;
-  padding:0.2em 0.4em;
+  padding: 0.2em 0.4em;
   border-radius: 5px;
 }
-input[type=checkbox] {
-    transform: scale(2);
+input[type="checkbox"] {
+  transform: scale(2);
 }
-.checkbox{
-    position: absolute;
-    top: 1em;
-    right: 1em;
+.checkbox {
+  position: absolute;
+  top: 1em;
+  right: 1em;
 }
-.ticket-time{
-    position: absolute;
-    bottom: 1.6em;
-    left: 1em;
-    font-size: 0.9em;
+.ticket-time {
+  position: absolute;
+  bottom: 1.6em;
+  left: 1em;
+  font-size: 0.9em;
 }
-.user-email{
-    position: absolute;
-    left: 1em;
-    bottom: 4em;
+.user-email {
+  position: absolute;
+  left: 1em;
+  bottom: 4em;
 }
-.label{
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    border-radius: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    background-color: white;
-    margin-left: 2.5px;
-    margin-right: 2.5px;
+.label {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: white;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
 }
-.label-div{
-    position: absolute;
-    top: 1em;
-    left: 0;
-    right: 0;
+.label-div {
+  position: absolute;
+  top: 1em;
+  left: 0;
+  right: 0;
 }
-.show-more-button{
-    display: block;
-    position: absolute;
-    bottom: 1em;
-    left: 0;
-    right: 0;
+.show-more-button {
+  display: block;
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  right: 0;
 }
 #alert-dialog-description {
   overflow-wrap: break-word;

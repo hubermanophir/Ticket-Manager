@@ -87,6 +87,25 @@ body {
   position: relative;
 }
 
+.ticket:hover {
+  -webkit-animation: pop 0.5s linear 1;
+          animation: pop 0.5s linear 1;
+}
+
+@-webkit-keyframes pop {
+  50% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+}
+
+@keyframes pop {
+  50% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+}
+
 .title {
   font-weight: bolder;
   font-size: 1.5em;
@@ -128,7 +147,7 @@ body {
   border-radius: 5px;
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   -webkit-transform: scale(2);
           transform: scale(2);
 }
