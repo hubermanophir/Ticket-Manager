@@ -83,15 +83,15 @@ function Ticket({
       <button onClick={(e) => hideClickHandle(e)} className="hideTicketButton">
         Hide
       </button>
+      <button onClick={(e) => deleteHandler(e.target)} className="delete">
+        Delete
+      </button>
       <input
         checked={isDone}
         className="checkbox"
         onChange={(e) => isDoneHandler(e.target)}
         type="checkbox"
       ></input>
-      <button onClick={(e) => deleteHandler(e.target)} className="delete">
-        Delete
-      </button>
     </div>
   );
 }
