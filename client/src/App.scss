@@ -36,6 +36,11 @@ body {
   float: right;
 }
 #searchInput {
+  //   position: absolute;
+  //   margin-left: auto;
+  //   margin-right: auto;
+  //   left: 0;
+  //   right: 0;
   display: block;
   margin: auto;
 }
@@ -55,89 +60,31 @@ body {
   flex-basis: 30%;
   text-align: center;
   height: 25em;
-  background: hsla(0, 0%, 0%, 0.05);
+  background: hsla(0, 0%, 0%, 0.1);
   border-radius: 5px;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
   -moz-box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow: 1px 1px 4px 5px #ccc;
-  position: relative;
 }
 .title {
   font-weight: bolder;
-  font-size: 1.5em;
-  margin-top: 3em;
+  font-size: larger;
+  margin-top: 2em;
   text-align: center;
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-bottom: 0.5em;
 }
 .content {
-  width: 25em;
+  width: 32em;
   margin: auto;
   overflow-wrap: break-word;
   text-align: center;
-}
-.hideTicketButton {
-  font-size: 1.2em;
-  cursor: pointer;
-  position: absolute;
-  top: 1em;
-  left: 1em;
-}
-.delete-button {
-  font-size: 1.2em;
-  cursor: pointer;
-//   position: absolute;
-//   bottom: 1em;
-//   right: 1em;
-}
-input[type=checkbox] {
-    transform: scale(2);
-}
-.checkbox{
-    position: absolute;
-    top: 1em;
-    right: 1em;
-}
-.ticket-time{
-    position: absolute;
-    bottom: 1.6em;
-    left: 1em;
-    font-size: 0.9em;
-}
-.user-email{
-    position: absolute;
-    left: 1em;
-    bottom: 4em;
-}
-.label{
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    border-radius: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    background-color: white;
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-}
-.label-div{
-    position: absolute;
-    top: 1em;
-    left: 0;
-    right: 0;
-}
-.show-more-button{
-    display: block;
-    position: absolute;
-    bottom: 1em;
-    left: 0;
-    right: 0;
 }
 #alert-dialog-description {
   overflow-wrap: break-word;
 }
 @media screen and (max-width: 500px) {
+  //   * {
+  //     box-sizing: border-box;
+  //   }
   .App {
     overflow-x: hidden;
     max-width: 100%;

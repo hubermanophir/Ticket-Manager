@@ -98,27 +98,22 @@ function Ticket({
             })
           : null}
       </div>
-      <div className="ticket-button-container">
-        <button
-          onClick={(e) => hideClickHandle(e.target)}
-          className="hideTicketButton"
-        >
-          Hide
-        </button>
-        <button
-          onClick={(e) => deleteHandler(e.target)}
-          className="delete-button"
-        >
-          Delete
-        </button>
-        <input
-          checked={isDone}
-          className="checkbox"
-          onChange={(e) => isDoneHandler(e.target)}
-          type="checkbox"
-        ></input>
-        <AlertDialog formatDate={formatDate} ticket={ticket} />
-      </div>
+      <button
+        onClick={(e) => hideClickHandle(e.target)}
+        className="hideTicketButton"
+      >
+        Hide
+      </button>
+      <button onClick={(e) => deleteHandler(e.target)} className="delete">
+        Delete
+      </button>
+      <input
+        checked={isDone}
+        className="checkbox"
+        onChange={(e) => isDoneHandler(e.target)}
+        type="checkbox"
+      ></input>
+      <AlertDialog formatDate={formatDate} ticket={ticket} />
     </div>
   );
 }
