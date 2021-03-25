@@ -17,11 +17,11 @@ export default function SimpleAlerts({ goodAlert, badAlert }) {
   return (
     <div className={classes.root}>
       {goodAlert ? (
-        <Alert variant="filled" severity="success">
+        <Alert className="alert" variant="filled" severity="success">
           Ticket added successfully!
         </Alert>
       ) : badAlert ? (
-        <Alert variant="filled" severity="error">
+        <Alert className="alert" variant="filled" severity="error">
           Ticket was not added Check your network connection!
         </Alert>
       ) : null}

@@ -98,6 +98,7 @@ function Ticket({
 
 //Helper functions---------------------------------------------------------
 const formatDate = (myDate) => {
+  myDate.setHours(myDate.getHours() - 2);
   const date = ("0" + myDate.getDate()).slice(-2);
   const month = ("0" + (myDate.getMonth() + 1)).slice(-2);
   const year = myDate.getFullYear();
