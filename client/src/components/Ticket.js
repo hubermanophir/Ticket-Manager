@@ -32,9 +32,9 @@ function Ticket({
     setIsDone(!isDone);
     (async () => {
       const ticket = e.parentElement;
-      const id = ticket.childNodes[1].innerText;
+      const id = ticket.childNodes[0].innerText;
       const done = isDone ? "undone" : "done";
-      const res = await axios.patch(`/api/tickets/${id}/${done}`);
+      await axios.patch(`/api/tickets/${id}/${done}`);
     })();
   };
 
@@ -47,21 +47,18 @@ function Ticket({
       } catch (err) {
         console.log(err.message);
       }
-      const res = await axios.get(`/api/tickets/`);
       const target = e.parentNode;
       const ticketArr = Array.from(document.querySelectorAll(".ticket"));
       const ticketIndex = ticketArr.indexOf(target);
       const tempTicketsArr = [...ticketsArray];
       tempTicketsArr.splice(ticketIndex, 1);
       setTicketsArray(tempTicketsArr);
-      // setTicketsArray(res.data);
     })();
     setLiveTicketsLength(liveTicketsLength - 1);
   };
 
   return (
     <div className={`ticket ${isDone ? "done" : "undone"}`}>
-      <span className="is-done" hidden={true}>{`${ticket.done}`}</span>
       <span className="id" hidden={true}>{`${ticket._id}`}</span>
       <div className="title">{ticket.title}</div>
       <div className="content">{ticket.content}</div>
