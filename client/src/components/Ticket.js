@@ -32,9 +32,9 @@ function Ticket({
     setIsDone(!isDone);
     (async () => {
       const ticket = e.parentElement;
-      const id = ticket.childNodes[0].innerText;
+      const id = ticket.childNodes[1].innerText;
       const done = isDone ? "undone" : "done";
-      await axios.patch(`/api/tickets/${id}/${done}`);
+      const res = await axios.patch(`/api/tickets/${id}/${done}`);
     })();
   };
 
@@ -47,6 +47,7 @@ function Ticket({
       } catch (err) {
         console.log(err.message);
       }
+      const res = await axios.get(`/api/tickets/`);
       const target = e.parentNode;
       const ticketArr = Array.from(document.querySelectorAll(".ticket"));
       const ticketIndex = ticketArr.indexOf(target);
@@ -59,6 +60,7 @@ function Ticket({
 
   return (
     <div className={`ticket ${isDone ? "done" : "undone"}`}>
+      <span className="is-done" hidden={true}>{`${ticket.done}`}</span>
       <span className="id" hidden={true}>{`${ticket._id}`}</span>
       <div className="title">{ticket.title}</div>
       <div className="content">{ticket.content}</div>
@@ -83,21 +85,22 @@ function Ticket({
       <button onClick={(e) => hideClickHandle(e)} className="hideTicketButton">
         Hide
       </button>
+      <button onClick={(e) => deleteHandler(e.target)} className="delete">
+        Delete
+      </button>
       <input
         checked={isDone}
         className="checkbox"
         onChange={(e) => isDoneHandler(e.target)}
         type="checkbox"
       ></input>
-      <button onClick={(e) => deleteHandler(e.target)} className="delete">
-        Delete
-      </button>
     </div>
   );
 }
 
 //Helper functions---------------------------------------------------------
 const formatDate = (myDate) => {
+  myDate.setHours(myDate.getHours() - 2);
   const date = ("0" + myDate.getDate()).slice(-2);
   const month = ("0" + (myDate.getMonth() + 1)).slice(-2);
   const year = myDate.getFullYear();
