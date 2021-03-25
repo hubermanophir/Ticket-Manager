@@ -22,15 +22,7 @@ function Main(props) {
   useEffect(() => {
     (async function loadTickets() {
       setDisplaySpinner(true);
-      let res;
-      try {
-        res = await axios.get(BASE_URL);
-      } catch (error) {
-        setBadAlert(true);
-        setTimeout(() => {
-          setBadAlert(false);
-        }, 3000);
-      }
+      const res = await axios.get(BASE_URL);
       setDisplaySpinner(false);
       res.data.sort((a, b) => {
         const dateA = new Date(a.creationTime),
@@ -54,7 +46,7 @@ function Main(props) {
       setBadAlert(true);
       setTimeout(() => {
         setBadAlert(false);
-      }, 3000);
+      },3000);
     }
     setLiveTicketsLength(res.data.length);
     setTicketsArray(res.data);
