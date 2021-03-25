@@ -18,7 +18,7 @@ export default function AlertDialog({ ticket, formatDate }) {
   };
 
   return (
-    <div>
+    <div className="show-more-button">
       <Button
         className="show-more"
         variant="outlined"

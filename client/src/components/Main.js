@@ -50,11 +50,7 @@ function Main(props) {
       )}
       <h1 id="main-title">Tickets Manager</h1>
       <div className="control-container">
-        <input
-          onChange={(e) => onInputChange(e.target.value)}
-          id="searchInput"
-          type="text"
-        />
+      
         <DisableElevation
           ticketsArray={ticketsArray}
           setTicketsArray={setTicketsArray}
@@ -78,6 +74,11 @@ function Main(props) {
         >
           restore
         </Button>
+        <input
+          onChange={(e) => onInputChange(e.target.value)}
+          id="searchInput"
+          type="text"
+        />
         <div className="ticket-number-div">-{liveTicketsLength} results-</div>
       </div>
       <div className="ticket-area">
