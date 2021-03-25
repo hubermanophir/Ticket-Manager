@@ -68,8 +68,8 @@ function Ticket({
   };
 
   const checkContentLength = () => {
-    if (ticket.content.length >= 400) {
-      const newTicket = ticket.content.slice(0, 299) + "...";
+    if (ticket.content.length >= 200) {
+      const newTicket = ticket.content.slice(0, 199) + "...";
       setTicketContent(newTicket);
     } else {
       setTicketContent(ticket.content);
