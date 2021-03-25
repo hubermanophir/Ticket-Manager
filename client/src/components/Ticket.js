@@ -40,7 +40,7 @@ function Ticket({
 
   const deleteHandler = (e) => {
     const ticketDiv = e.parentElement;
-    const id = ticketDiv.childNodes[1].innerText;
+    const id = ticketDiv.childNodes[0].innerText;
     (async () => {
       try {
         await axios.delete(`/api/tickets/${id}`);
