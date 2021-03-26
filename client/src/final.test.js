@@ -43,8 +43,8 @@ const projectName = "1.Ticket Manager UI";
 describe(projectName, () => {
   beforeAll(async () => {
     browser = await puppeteer.launch({
-      // headless:false,
-      // slowMo:100
+      // headless: false,
+      // slowMo: 10,
     });
     page = await browser.newPage();
     useNock(page, ["http://localhost:3000/api"]);
@@ -138,5 +138,11 @@ describe(projectName, () => {
     await page.click("#restoreHideTickets");
     const elements = await page.$$(".ticket");
     expect(elements.length).toBe(mockData.length);
+  });
+  test("Can delete ticket", async () => {
+    await page.click(".ticket .delete");
+    await page.waitFor(100);
+    const elements = await page.$$(".ticket");
+    expect(elements.length).toBe(mockData.length - 1);
   });
 });
