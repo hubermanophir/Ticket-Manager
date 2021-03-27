@@ -44,7 +44,7 @@ describe(projectName, () => {
   beforeAll(async () => {
     browser = await puppeteer.launch({
       // headless: false,
-      // slowMo: 10,
+      slowMo: 10,
     });
     page = await browser.newPage();
     useNock(page, ["http://localhost:3000/api"]);
@@ -141,7 +141,7 @@ describe(projectName, () => {
   });
   test("Can delete ticket", async () => {
     await page.click(".ticket .delete");
-    await page.waitFor(100);
+    // await page.waitFor(100);
     const elements = await page.$$(".ticket");
     expect(elements.length).toBe(mockData.length - 1);
   });
