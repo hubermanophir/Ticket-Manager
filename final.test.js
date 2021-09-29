@@ -7,9 +7,11 @@ const app = require("./app");
 const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
 const seed = require("./seeder");
+const Ticket = require("./models/Ticket");
 let mongoClient;
 let DB;
 let tickets;
+let myId;
 
 const connectToMongoDB = async () => {
   mongoClient = new MongoClient(process.env.TEST_MONGO_URI, {
@@ -55,7 +57,6 @@ describe(projectName, () => {
   test("Can get all tickets", async () => {
     const { body } = await request(app).get("/api/tickets").expect(200);
     const allTickets = await tickets.find({}).toArray();
-
     expect(body.length).toBe(allTickets.length);
     expect(body[0]._id.toString()).toBe(allTickets[0]._id.toString());
   });
@@ -104,5 +105,30 @@ describe(projectName, () => {
     expect(undoneBody.updated).toBe(true);
     const revertedTicket = await tickets.findOne({});
     expect(revertedTicket.done).toBe(currentState);
+  });
+
+  test("Can add a new ticket", async () => {
+    const myTicket = {
+      title: "test title",
+      content: "test body",
+      userEmail: "ofir@mail.com",
+      done: false,
+      labels: [1, 2, 3, 4],
+    };
+    const response = await request(app).post("/api/tickets").send(myTicket);
+    const ticket = await Ticket.find({ title: "test title" });
+    myId = ticket[0]._id;
+    expect(response.status).toBe(200);
+    expect(response.body.message).toBe("Ticket added");
+    expect(ticket[0].title).toBe("test title");
+  });
+
+  test("Can delete a ticket", async (done) => {
+    const response = await request(app).delete(`/api/tickets/${myId}`);
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({ message: "Ticket deleted successfully" });
+    const ticket = await Ticket.find({ title: "test title" });
+    expect(ticket[0]).toBeUndefined();
+    done();
   });
 });

@@ -3,51 +3,35 @@
 *:after {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 body {
   max-width: 1700px;
   margin: auto;
 }
-
 @media screen and (max-width: 992px) {
   body {
     width: 90%;
   }
 }
-
 .alert {
   position: fixed;
   width: 80%;
-  -webkit-animation: fadeIn 1s;
-          animation: fadeIn 1s;
+  animation: fadeIn 1s;
   opacity: 1;
 }
-
 #main-title {
   font-size: 4em;
   margin-top: 1em;
   margin-bottom: 0.5em;
   color: #3f51b5;
 }
-
 h2 {
   font-size: 2em;
   margin-bottom: 3em;
   font-family: "Lucida Console", "Courier New", monospace;
-}
 
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -56,16 +40,13 @@ h2 {
     opacity: 1;
   }
 }
-
 #spinner {
   z-index: 10;
   position: fixed;
   top: 70%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-
 .control-container {
   position: relative;
   background-color: #293994;
@@ -76,16 +57,13 @@ h2 {
 #button-container {
   float: right;
 }
-
 #searchInput {
   display: block;
   margin: auto;
 }
-
 #hideTicketsCounter {
   font-size: larger;
 }
-
 .ticket-number-div {
   margin: auto;
   padding: auto;
@@ -94,7 +72,6 @@ h2 {
   margin-bottom: -1.5em;
   font-size: larger;
 }
-
 input[type="text"] {
   padding: 0.2em 3em;
   font-size: 1.5em;
@@ -102,63 +79,41 @@ input[type="text"] {
   border-radius: 5px;
   border-width: 0.5px;
 }
-
 .add-new-div {
   text-align: center;
   margin-bottom: 1em;
 }
-
 .ticket-area {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin-top: 5em;
   gap: 1.5em;
 }
-
 .done {
   opacity: 0.2;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-
 .ticket {
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
+  flex-basis: 30%;
   text-align: center;
   height: 25em;
-  background: rgba(0, 0, 0, 0.05);
+  background: hsla(0, 0%, 0%, 0.05);
   border-radius: 5px;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow: 1px 1px 4px 5px #ccc;
   position: relative;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-
 .ticket:hover {
-  -webkit-animation: pop 0.5s linear 1;
-          animation: pop 0.5s linear 1;
+  animation: pop 0.5s linear 1;
 }
-
-@-webkit-keyframes pop {
-  50% {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05);
-  }
-}
-
 @keyframes pop {
   50% {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05);
+    transform: scale(1.05);
   }
 }
-
 .title {
   font-weight: bolder;
   font-size: 1.5em;
@@ -168,14 +123,12 @@ input[type="text"] {
   margin-right: 1em;
   margin-bottom: 0.5em;
 }
-
 .content {
   width: 25em;
   margin: auto;
   overflow-wrap: break-word;
   text-align: center;
 }
-
 .hideTicketButton {
   font-size: 1em;
   cursor: pointer;
@@ -187,14 +140,11 @@ input[type="text"] {
   padding: 0.3em 0.5em;
   border-radius: 5px;
   border-width: 0;
+  &:hover {
+    background-color: #2b3985;
+    transition-duration: 0.3s;
+  }
 }
-
-.hideTicketButton:hover {
-  background-color: #2b3985;
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-}
-
 .delete {
   font-size: 1em;
   cursor: pointer;
@@ -206,39 +156,31 @@ input[type="text"] {
   padding: 0.3em 0.5em;
   border-radius: 5px;
   border-width: 0;
+  &:hover {
+    background-color: #2b3985;
+    transition-duration: 0.3s;
+  }
 }
-
-.delete:hover {
-  background-color: #2b3985;
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-}
-
 input[type="checkbox"] {
-  -webkit-transform: scale(2);
-          transform: scale(2);
+  transform: scale(2);
 }
-
 .checkbox {
   position: absolute;
   top: 1em;
   right: 1em;
   cursor: pointer;
 }
-
 .ticket-time {
   position: absolute;
   bottom: 1.6em;
   left: 1em;
   font-size: 0.9em;
 }
-
 .user-email {
   position: absolute;
   left: 1em;
   bottom: 4em;
 }
-
 .label {
   border-style: solid;
   border-color: black;
@@ -250,14 +192,12 @@ input[type="checkbox"] {
   margin-left: 2.5px;
   margin-right: 2.5px;
 }
-
 .label-div {
   position: absolute;
   bottom: 5em;
   left: 0;
   right: 0;
 }
-
 .show-more-button {
   display: block;
   position: absolute;
@@ -265,24 +205,17 @@ input[type="checkbox"] {
   left: 0;
   right: 0;
 }
-
 #alert-dialog-description {
   overflow-wrap: break-word;
 }
-
 @media screen and (max-width: 500px) {
   .App {
     overflow-x: hidden;
     max-width: 100%;
   }
   .control-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   input[type="text"] {
     padding: 0.2em 1em;
@@ -302,4 +235,3 @@ input[type="checkbox"] {
     font-family: "Lucida Console", "Courier New", monospace;
   }
 }
-/*# sourceMappingURL=App.css.map */
